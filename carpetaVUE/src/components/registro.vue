@@ -5,20 +5,23 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
+const errorMessage = ref('');
+const successMessage = ref('');
 
 const register = async () => {
     if (password.value !== confirmPassword.value) {
         errorMessage.value = "Las contraseñas no coinciden";
+        successMessage.value = "";
         return;
     }
     const auth = getAuth();
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
-        const user = userCredential.user;
-        // Registro exitoso
-        console.log('Usuario registrado:', successMessage);
+        successMessage.value = "Usuario registrado con éxito.";
+        errorMessage.value = "";
     } catch (error) {
-        console.log('error:',errorMessage);
+        errorMessage.value = "Error al registrar: " + error.message;
+        successMessage.value = "";
     }
 };
 </script>
@@ -35,11 +38,10 @@ const register = async () => {
             <input type="password" id="contraseña" v-model="password" placeholder="Introduce tu contraseña">
             <label for="verificacion_contraseña">Verificación de contraseña</label>
             <input type="password" id="verificacion_contraseña" v-model="confirmPassword" placeholder="Repite tu contraseña">
-            <input type="submit" value="Iniciar Sesion">
+            <input type="submit" value="Registrarse">
         </form>
-<!--Si las contraseñas no coinciden, muestra un mensaje de error-->
-       <p v-if="errorMessage" class="error">{{errorMessage}}</p>
-        <!--Si el registro se ha realizado correctamente, muestra un mensaje de éxito-->
-        <p v-if="successMessage" class="success">{{successMessage}}</p>
+        <!-- Mensajes de error o éxito -->
+        <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+        <p v-if="successMessage" class="success">{{ successMessage }}</p>
     </div>
 </template>

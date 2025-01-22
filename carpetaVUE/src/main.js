@@ -1,9 +1,9 @@
 //import './assets/main.css';
 
-import { VueFire, VueFireAuth } from 'vuefire'
 import { createApp } from 'vue'
 import App from './App.vue'
-import { firebaseApp } from '../firebase'
+import { VueFire, VueFireAuth } from 'vuefire'
+import { firebaseApp } from '../firebase.js'
 import { createWebHistory, createRouter } from 'vue-router'
 
 import landing from './components/landing.vue'

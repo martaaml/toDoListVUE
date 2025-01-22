@@ -1,6 +1,5 @@
 <script setup>
 
-
 </script>
 
 <template>
@@ -30,5 +29,5 @@
         <video src="../assets/video.mp4" muted autoplay alt="Vista previa de la aplicación"></video>
         Puedes ver comentarios de la gente aqui:
     </section>
-
+        
 </template>
