@@ -23,10 +23,6 @@
         Tus tareas se guardarán en la base de datos de Firebase.
         <br>
         <br>
-        Aqui tienes una vista previa de la aplicación y su usabilidad:
-        <br>
-        <br>
-        <video src="../assets/video.mp4" muted autoplay alt="Vista previa de la aplicación"></video>
         Puedes ver comentarios de la gente aqui:
     </section>
         

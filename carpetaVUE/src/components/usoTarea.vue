@@ -2,8 +2,8 @@
 defineProps(['cantidadTareasPendentes']);
 const emit = defineEmits(['eliminaTareasCompletadas', 'eliminaTodasTareas']);
 
-function eliminaTareasCompletadas() {
-  emit('eliminaTareasCompletadas');
+function eliminaTCompletadas() {
+  emit('eliminaTCompletadas');
 }
 
 function eliminaTodasTareas() {

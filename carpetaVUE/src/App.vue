@@ -1,13 +1,14 @@
-a<script setup>
+<script setup>
 // Importamos los componentes necesarios
 import cabecera from './components/cabecera.vue';
 import usoTarea from './components/usoTarea.vue';
 import Tarea from './components/recordatorios.vue';
 
 
-import { computed, onMounted } from 'vue';
-import { useCollection, useFirestore } from 'vuefire';
+import { computed } from 'vue';
+import { getCurrentUser, useCollection, useFirestore } from 'vuefire';
 import { doc, collection, addDoc, orderBy, query, updateDoc, deleteDoc } from 'firebase/firestore';
+import { get } from 'firebase/database';
 
 const db = useFirestore();
 
@@ -21,6 +22,8 @@ const numeroTareasPendientes = computed(() => {
 
 // Computamos el número total de recordatorios
 const numero = computed(() => listaRecordatorios.value.length);
+
+
 
 // Función para agregar un nuevo recordatorio
 function altaNuevaNota(texto, prioridad = 'normal') {
@@ -44,7 +47,7 @@ function altaNuevaNota(texto, prioridad = 'normal') {
 }
 
 // Función para eliminar tareas completadas
-function eliminaTareasCompletadas() {
+function eliminaTCompletadas() {
   listaRecordatorios.value.forEach(recordatorio => {
     if (recordatorio.completada) {
       deleteDoc(doc(db, "recordatorios", recordatorio.id))
@@ -155,7 +158,7 @@ function tachado(indice) {
 <div>{{ cantidadTareasPendentes }} tareas pendientes de {{ numero }} recordatorios</div>
 
 <usoTarea 
-@eliminaTareasCompletadas="eliminaTareasCompletadas" 
+@eliminaTareasCompletadas="eliminaTareasCompletadas"
 @eliminaTodasTareas="eliminaTodasTareas" 
 @cambiaPrioridad="cambiaPrioridad"
 />

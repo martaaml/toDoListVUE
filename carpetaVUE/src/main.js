@@ -15,7 +15,7 @@ const routes = [
   { path: '/', component: landing, meta: { requiresAuth: false } },
   {path: '/login', component: login, meta: { requiresAuth: false }},
   {path: '/registro', component: registro, meta: { requiresAuth: false }},
-  { path: '/recordatorios', component:  recordatorios, meta: { requiresAuth: true }}
+  { path: '/recordatorios', component:  recordatorios, meta: { requiresAuth: true }},
 ]
 
 const router = createRouter({
